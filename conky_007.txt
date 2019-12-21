@@ -1,0 +1,91 @@
+##.conkrc for Devuan running Beowulf (3) x86_63,modifiable for one or multiple CPU's
+
+background yes
+font Noto Mono:size=10.4
+xftfont Noto Mono:size=10.4
+use_xft yes
+xftalpha 0.1
+update_interval 1.6
+total_run_times 0
+own_window yes
+own_window_type normal
+own_window_transparent no
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+minimum_size 220
+maximum_width 380
+default_color red
+default_shade_color 'white'
+default_outline_color 000000
+alignment top_right
+gap_x 50
+gap_y 16
+no_buffers yes
+cpu_avg_samples 2
+override_utf8_locale yes
+uppercase no # set to yes if you want all text to be in uppercase
+use_spacer none
+out_to_x yes
+out_to_console no
+
+TEXT
+$alignc Hostname: $nodename
+$alignc Kernel: $kernel   $alignc Uptime: $uptime
+${color #B8FF00}CPU:${color white}
+Core1:$alignr ${cpu cpu1}%@${freq_g cpu1}GHz ${cpubar cpu1 7,76}
+Core2:$alignr ${cpu cpu2}%@${freq_g cpu2}GHz ${cpubar cpu2 7,76}
+Core3:$alignr ${cpu cpu3}%@${freq_g cpu3}GHz ${cpubar cpu3 7,76}
+Core4:$alignr ${cpu cpu4}%@${freq_g cpu4}GHz ${cpubar cpu4 7,76}
+#Core5:$alignr ${cpu cpu5}%@${freq_g cpu5}GHz ${cpubar cpu5 7,76}
+Overall Usage:$alignr $cpu% $alignr${cpubar 8,182}
+${cpugraph 20,}
+${color #B8FF00}Highest CPU $alignr CPU%   MEM%${color white}
+${top name 1}$alignr${top cpu 1}     ${top mem 1}
+${top name 2}$alignr${top cpu 2}     ${top mem 2}
+${top name 3}$alignr${top cpu 3}     ${top mem 3}
+${top name 4}$alignr${top cpu 4}     ${top mem 4}
+${top name 5}$alignr${top cpu 5}     ${top mem 5}
+${top name 6}$alignr${top cpu 6}     ${top mem 6}
+${top name 7}$alignr${top cpu 7}     ${top mem 7}
+${top name 8}$alignr${top cpu 8}     ${top mem 8}
+${top name 9}$alignr${top cpu 9}     ${top mem 9}
+#${top name 10}$alignr${top cpu 10}   ${top mem 10}
+#${top name 11}$alignr${top cpu 11}   ${top mem 11}
+${color #B8FF00}MEM:${color white}
+RAM ${alignr}$mem / $memmax ($memperc%)
+${membar 8}
+SWAP ${alignr}$swap / $swapmax ($swapperc%)
+${swapbar 8}
+${color #B8FF00}Highest MEM $alignr CPU%   MEM%${color white}
+${top_mem name 1}$alignr${top_mem cpu 1}     ${top_mem mem 1}
+${top_mem name 2}$alignr${top_mem cpu 2}     ${top_mem mem 2}
+${top_mem name 3}$alignr${top_mem cpu 3}     ${top_mem mem 3}
+${top_mem name 4}$alignr${top_mem cpu 4}     ${top_mem mem 4}
+${top_mem name 5}$alignr${top_mem cpu 5}     ${top_mem mem 5}
+${top_mem name 6}$alignr${top_mem cpu 6}     ${top_mem mem 6}
+${top_mem name 7}$alignr${top_mem cpu 7}     ${top_mem mem 7}
+${top_mem name 8}$alignr${top_mem cpu 8}     ${top_mem mem 8}
+#${top_mem name 9}$alignr${top_mem cpu 9}     ${top_mem mem 9}
+#${top_mem name 10}$alignr${top_mem cpu 10}   ${top_mem mem 10}
+${color #B8FF00}HDD:${color white} ${alignr}
+Linux: ${alignc} ${fs_bar 8,75} ${alignr} ${fs_free /}  /   ${fs_size /} (${fs_free_perc /}%)
+boot: ${alignc} ${fs_bar 8,75 /boot/} ${alignr}${fs_free /boot}  /   ${fs_size /boot} (${fs_free_perc /boot}%)
+home: ${alignc} ${fs_bar 8,75 /home} ${alignr}${fs_free /home}  /  ${fs_size /home} (${fs_free_perc /home}%)
+${color white}HDD Read-> ${alignc}${color green}${diskio_read}/s ${alignr}${color #FF0009}${diskio_write}/s ${color white}<-HDD Write
+${color green}${diskiograph_read 20,150} ${alignr}${color #FF0009}${diskiograph_write 20,150}${color white}
+#${color #B8FF00}LAN:${color white} ${alignr}IP: ${addr eth1}
+#${color green}LAN Download:                  $alignr${color #FF0009}LAN Upload:
+#${color green}${downspeed eth1} k/s                                  ${alignr}     ${color #FF0009} ${upspeed eth1} k/s
+#${color green}${downspeedgraph eth1 20,150} ${alignr}${color #FF0009}${upspeedgraph eth1 20,150}
+#${color green}Total:${totaldown eth1}  ${alignr}${color #FF0009}Total:${totalup eth1}
+${color #B8FF00}WiFi:${color white} ${alignc}                 IP: ${addr wlan0} ${alignr}Rate:${color orange}${wireless_bitrate wlan0}${color white}
+Link quality: ${color orange}${wireless_link_qual_perc wlan0}%${color white} ${alignr}${wireless_link_bar 8,185 wlan0}
+${color green}WiFi Download: ${color white}${alignc}    ESSID: ${color orange}${wireless_essid wlan0}${color white} $alignr${color #FF0009}WiFi Upload:
+${color green}${downspeed wlan0}KB/s    ${color #FF0009} ${alignr}${upspeed wlan0}KB/s
+${color green}${downspeedgraph wlan0 20,150} ${alignr}${color #FF0009}${upspeedgraph wlan0 20,150}
+${color green}Total:${totaldown wlan0}  ${alignr}${color #FF0009}Total:${totalup wlan0}
+${color white}AP Mode: ${wireless_mode wlan0} ${alignr}AP MAC: ${wireless_ap wlan0}
